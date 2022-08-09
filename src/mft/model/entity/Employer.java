@@ -1,19 +1,21 @@
 package mft.model.entity;
 
+import com.google.gson.Gson;
+
 public class Employer {
     private int employerId;
     private String employerName;
     private String employerLastName;
-    private User userEmployer;
+    private String userEmployer;
 
-    public Employer(int employerId, String employerName, String employerLastName, User userEmployer) {
+    public Employer(int employerId, String employerName, String employerLastName, String userEmployer) {
         this.employerId = employerId;
         this.employerName = employerName;
         this.employerLastName = employerLastName;
         this.userEmployer = userEmployer;
     }
 
-    public Employer(String employerName, String employerLastName, User userEmployer) {
+    public Employer(String employerName, String employerLastName, String userEmployer) {
         this.employerName = employerName;
         this.employerLastName = employerLastName;
         this.userEmployer = userEmployer;
@@ -49,23 +51,18 @@ public class Employer {
         return this;
     }
 
-    public User getUserEmployer() {
+    public String getUserEmployer() {
         return userEmployer;
     }
 
-    public Employer setUserEmployer(User userEmployer) {
+    public Employer setUserEmployer(String userEmployer) {
         this.userEmployer = userEmployer;
         return this;
     }
 
     @Override
     public String toString() {
-        return "Employer{" +
-                "employerId=" + employerId +
-                ", employerName='" + employerName + '\'' +
-                ", employerLastName='" + employerLastName + '\'' +
-                ", userEmployer=" + userEmployer +
-                '}';
+        return new Gson().toJson(this);
     }
 }
 
